@@ -169,6 +169,145 @@ input{
     background-color: var(--dark-theme);
 }
 
+/* --- Research Portal Styling --- */
+
+.research-portal {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.search-container {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-box input {
+    flex: 1;
+    float: none; /* Resetting your global float */
+    height: 45px;
+    padding: 0 20px;
+    border: 2px solid var(--theme);
+    border-radius: 25px;
+    outline: none;
+}
+
+.search-box button {
+    padding: 0 25px;
+    background: var(--theme);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.search-box button:hover {
+    background: var(--dark-theme);
+}
+
+/* Category Filter Buttons */
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.filter-btn {
+    background: transparent;
+    color: var(--theme);
+    border: 1px solid var(--theme);
+    padding: 6px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background: var(--theme);
+    color: white;
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.status-msg {
+    grid-column: 1 / -1;
+    color: var(--meta);
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* Research Card Design */
+.research-card {
+    background: var(--primary);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    text-align: left; /* Local override for cards */
+}
+
+.research-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+}
+
+.research-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    text-align: left;
+}
+
+.card-content h3 {
+    color: var(--theme);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.card-content p {
+    font-size: 0.85rem;
+    color: var(--meta);
+    line-height: 1.4;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.card-meta {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--meta);
+    text-transform: uppercase;
+}
+
+
 footer{
      color: #777;
      margin: 40px auto;
