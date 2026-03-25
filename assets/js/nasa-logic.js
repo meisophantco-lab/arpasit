@@ -1,41 +1,39 @@
 // 1. Configuration
-const NASA_KEY = 'nACav5ebxmZCgFVz0fg8eLpZ8ZOduDi5SPU4hAIe'; // Replace 'DEMO_KEY' with your actual key later
+const NASA_KEY = 'nACav5ebxmZCgFVz0fg8eLpZ8ZOduDi5SPU4hAIe'; 
 
 /**
  * The "Brain" of ARPASIT
- * This connects to the real NASA Data Servers (not just the website)
  */
 async function fetchNasaData(query, type = 'images') {
     let url = '';
-    const today = new Date().toISOString().split('T')[0]; // Gets today's date YYYY-MM-DD
+    // Fix: Ensure today's date is formatted correctly for the API
+    const today = new Date().toISOString().split('T')[0]; 
 
-    // Pick the correct NASA API Server based on the research type
+    // FIXED URLS: Points to the actual API servers, not the main website
     if (type === 'images') {
-        // Search the Image & Video Library (Science Facts & Photos)
+        // Image Library uses a different base URL
         url = `https://nasa.gov{query}&media_type=image`;
     } 
     else if (type === 'asteroids') {
-        // Track Near Earth Objects (Asteroid Radar)
-        url = `https://nasa.gov{today}&end_date=${today}&api_key=$nACav5ebxmZCgFVz0fg8eLpZ8ZOduDi5SPU4hAIe`;
+        // NeoWs API - Track Near Earth Objects
+        url = `https://nasa.gov{today}&end_date=${today}&api_key=${NASA_KEY}`;
     } 
     else if (type === 'mars') {
-        // Pull Live Mars Rover (Curiosity) Photos
-        url = `https://nasa.govnACav5ebxmZCgFVz0fg8eLpZ8ZOduDi5SPU4hAIe`;
+        // Mars Rover API - Curiosity Photos
+        url = `https://nasa.gov{NASA_KEY}`;
     }
 
     try {
         const response = await fetch(url);
-        if (!response.ok) throw new Error("NASA Connection Failed");
+        if (!response.ok) throw new Error("NASA Connection Failed: " + response.status);
         
         const data = await response.json();
 
-        // Standardize the data so research-engine.js can read it
+        // Standardize the data for research-engine.js
         if (type === 'images') return data.collection.items;
         if (type === 'mars') return data.photos;
         if (type === 'asteroids') {
-            // Asteroid data is hidden inside the date object
-            const asteroidList = data.near_earth_objects[today];
-            return asteroidList;
+            return data.near_earth_objects[today];
         }
 
     } catch (error) {
