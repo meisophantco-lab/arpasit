@@ -1,6 +1,7 @@
-// Configuration
+// 1. Correct API Configuration
 const NASA_SEARCH_URL = 'https://nasa.gov';
 
+// 2. Main Research Function
 async function performResearch() {
     const query = document.getElementById('searchInput').value;
     const resultsGrid = document.getElementById('resultsGrid');
@@ -10,11 +11,14 @@ async function performResearch() {
         return;
     }
 
-    resultsGrid.innerHTML = "<p class='status-msg'>Connecting to ARPASIT Archives...</p>";
+    resultsGrid.innerHTML = `<p class='status-msg'>Retrieving ${query} Research Data...</p>`;
 
     try {
-        // Fetching data from NASA's Image and Video Library
+        // Fetching from the actual NASA Image and Video Library API
         const response = await fetch(`${NASA_SEARCH_URL}?q=${query}&media_type=image`);
+        
+        if (!response.ok) throw new Error("Network response was not ok");
+        
         const data = await response.json();
         const items = data.collection.items;
 
@@ -25,17 +29,19 @@ async function performResearch() {
     }
 }
 
+// 3. Function to display the results on the page
 function displayResearchItems(items) {
     const resultsGrid = document.getElementById('resultsGrid');
     resultsGrid.innerHTML = ""; // Clear status message
 
-    if (items.length === 0) {
+    if (!items || items.length === 0) {
         resultsGrid.innerHTML = "<p class='status-msg'>No research data found for this query.</p>";
         return;
     }
 
     // Show top 12 results
     items.slice(0, 12).forEach(item => {
+        // Correctly accessing the first item in data and links arrays
         const scienceData = item.data[0];
         const imageUrl = item.links[0].href;
 
@@ -58,10 +64,15 @@ function displayResearchItems(items) {
     });
 }
 
-// Event Listeners for the Search Button
+// 4. Category Button Logic
+function quickSearch(category) {
+    document.getElementById('searchInput').value = category;
+    performResearch(); 
+}
+
+// 5. Event Listeners
 document.getElementById('searchBtn').addEventListener('click', performResearch);
 
-// Allow pressing "Enter" to search
 document.getElementById('searchInput').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') performResearch();
 });
