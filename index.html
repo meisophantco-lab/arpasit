@@ -11,6 +11,7 @@
     <header>
         <div class="header">
             <h1>ARPASIT</h1>
+            <br><br>
             <div class="menu-btn" id="menuBtn">☰</div>
             <nav class="nav" id="navMenu">
                 <a href="./">Home</a>
@@ -18,35 +19,41 @@
                 <a href="./contact-us/">Contact Us</a>
             </nav>
         </div>
-        <p class="logo">-Advanced Research Project Agency For Science And Information Technology-</p>
+        <br>
+        <p class="logo">
+            -Advanced Research Project Agency For Science And Information Technology-
+        </p>
     </header>
 
-    <main class="research-portal">
+    <main class="research-portal padding-2">
         <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search NASA Research Archives...">
-                <button id="searchBtn">Start Research</button>
+            <!-- Search Box Section -->
+            <div class="search-box" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                <input type="text" id="searchInput" placeholder="Search NASA Research Archives..." style="width: 70%; float: none;">
+                <!-- Ensure onclick="performResearch()" is present -->
+                <button id="searchBtn" class="submit" onclick="performResearch()" style="width: 20%; height: 50px; cursor: pointer;">Research</button>
             </div>
 
-            <div class="category-filters">
-                <button class="filter-btn" onclick="quickSearch('Mars')">Mars</button>
-                <button class="filter-btn" onclick="quickSearch('Earth')">Earth</button>
-                <button class="filter-btn" onclick="quickSearch('Satellite')">Satellites</button>
-                <button class="filter-btn" onclick="quickSearch('Technology')">NASA Tech</button>
-                <button class="filter-btn" onclick="quickSearch('Nebula')">Deep Space</button>
+            <!-- Quick Filter Section -->
+            <div class="category-filters" style="margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap;">
+                <button class="filter-btn submit" onclick="quickSearch('Mars')" style="padding: 5px 15px; margin: 5px; border-radius: 20px; font-size: 0.8rem; cursor: pointer;">Mars</button>
+                <button class="filter-btn submit" onclick="quickSearch('Earth')" style="padding: 5px 15px; margin: 5px; border-radius: 20px; font-size: 0.8rem; cursor: pointer;">Earth</button>
+                <button class="filter-btn submit" onclick="quickSearch('Technology')" style="padding: 5px 15px; margin: 5px; border-radius: 20px; font-size: 0.8rem; cursor: pointer;">NASA Tech</button>
+                <button class="filter-btn submit" onclick="quickSearch('Galaxy')" style="padding: 5px 15px; margin: 5px; border-radius: 20px; font-size: 0.8rem; cursor: pointer;">Deep Space</button>
             </div>
         </div>
         
-        <div id="resultsGrid" class="results-grid">
-            <p class="status-msg">Select a category or enter a topic to begin data retrieval.</p>
+        <!-- Results Container -->
+        <div id="resultsGrid" class="results-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+            <p class="status-msg" style="grid-column: 1/-1; color: #777; text-align: center;">Select a category or enter a topic to begin retrieval.</p>
         </div>
     </main>
 
     <footer>
-        &copy;Copyright, Meisophant Digital Services, 2026
+        &copy;Copyright, [Meisophant Digital Services](https://meisophant.name.ng/about-us/index.html), 2026
     </footer>
 
-    <!-- LOAD ORDER MATTERS -->
+    <!-- Essential Scripts -->
     <script src="./assets/js/script.js"></script> 
     <script src="./assets/js/nasa-logic.js"></script>
     <script src="./assets/js/research-engine.js"></script>
