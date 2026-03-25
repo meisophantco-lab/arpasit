@@ -11,7 +11,6 @@
     <header>
         <div class="header">
             <h1>ARPASIT</h1>
-            <br><br>
             <div class="menu-btn" id="menuBtn">☰</div>
             <nav class="nav" id="navMenu">
                 <a href="./">Home</a>
@@ -19,10 +18,7 @@
                 <a href="./contact-us/">Contact Us</a>
             </nav>
         </div>
-        <br>
-        <p class="logo">
-            -Advanced Research Project Agency For Science And Information Technology-
-        </p>
+        <p class="logo">-Advanced Research Project Agency For Science And Information Technology-</p>
     </header>
 
     <main class="research-portal">
@@ -33,11 +29,11 @@
             </div>
 
             <div class="category-filters">
-                <button class="filter-btn" onclick="quickSearch('Mars')">Mars Exploration</button>
-                <button class="filter-btn" onclick="quickSearch('Earth')">Earth Science</button>
+                <button class="filter-btn" onclick="quickSearch('Mars')">Mars</button>
+                <button class="filter-btn" onclick="quickSearch('Earth')">Earth</button>
+                <button class="filter-btn" onclick="quickSearch('Satellite')">Satellites</button>
                 <button class="filter-btn" onclick="quickSearch('Technology')">NASA Tech</button>
-                <button class="filter-btn" onclick="quickSearch('Apollo')">History/Apollo</button>
-                <button class="filter-btn" onclick="quickSearch('Black Hole')">Deep Space</button>
+                <button class="filter-btn" onclick="quickSearch('Nebula')">Deep Space</button>
             </div>
         </div>
         
@@ -50,7 +46,9 @@
         &copy;Copyright, Meisophant Digital Services, 2026
     </footer>
 
+    <!-- LOAD ORDER MATTERS -->
     <script src="./assets/js/script.js"></script> 
+    <script src="./assets/js/nasa-logic.js"></script>
     <script src="./assets/js/research-engine.js"></script>
 </body>
 </html>
