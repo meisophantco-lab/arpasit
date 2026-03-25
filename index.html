@@ -10,10 +10,7 @@
 <body>
     <header>
         <div class="header">
-            <h1>
-                ARPASIT
-            </h1>
-            <br><br>
+            <h1>ARPASIT</h1>
             <div class="menu-btn" id="menuBtn">☰</div>
             <nav class="nav" id="navMenu">
                 <a href="./">Home</a>
@@ -21,14 +18,36 @@
                 <a href="./contact-us/">Contact Us</a>
             </nav>
         </div>
-        <br>
-        <p class="logo">
-            -Advanced Research Project Agency For Science And Information Technology-
-        </p>
+        <p class="logo">-Advanced Research Project Agency For Science And Information Technology-</p>
     </header>
+
+    <main class="research-section">
+        <div class="search-container">
+            <div class="agency-controls">
+                <select id="nasaDept">
+                    <option value="images">General Science Library</option>
+                    <option value="mars">Mars Rover Expedition</option>
+                    <option value="asteroids">Planetary Defense (NeoWs)</option>
+                </select>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search for research topics...">
+                    <button id="searchBtn">Initialize Research</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Output Area -->
+        <div id="resultsGrid" class="results-grid">
+            <div class="status-msg">Awaiting research parameters...</div>
+        </div>
+    </main>
+
     <footer>
         &copy;Copyright, Meisophant Digital Services, 2026
     </footer>
+
+    <!-- New Modular Scripts -->
+    <script src="./assets/js/nasa-logic.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
